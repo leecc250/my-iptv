@@ -1,1 +1,16 @@
-
+{
+  "sources": [
+    "https://iptv-org.github.io/iptv/index.m3u",
+    "https://raw.githubusercontent.com/free-tv/IPTV/master/playlist.m3u8"
+  ],
+  "keywords": [
+    "cctv2"
+    "凤凰卫视"
+    "CNN",
+    "Bloomberg",
+    "CNBC",
+    "BBC World News",
+    "Sky News"
+  ],
+  "custom_sources_file": "sources.m3u"
+}
