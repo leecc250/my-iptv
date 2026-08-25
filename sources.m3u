@@ -1,0 +1,5 @@
+#EXTM3U
+#EXTINF:-1 group-title="自定义财经", 彭博财经备用源
+https://liveprodus-east.global.ssl.fastly.net/us/justin/bloomberg_us.m3u8
+#EXTINF:-1 group-title="自定义新闻", CNN备用源
+https://cnn-cnninternational-1-de.samsung.wurl.tv/manifest/playlist.m3u8
