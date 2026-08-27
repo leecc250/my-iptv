@@ -19,7 +19,7 @@ OUTPUT_FILE = "playlist.m3u"
 
 # 核心白名单规则：只允许匹配以下关键词的频道通过
 TARGET_CHANNELS = [
-    {"name": "CCTV财经", "keywords": ["cctv 2", "cctv-2", "cctv2", "财经"]},
+    {"name": "CCTV财经", "keywords": ["cctv 2", "cctv-2", "cctv2"]},
     {"name": "Bloomberg TV", "keywords": ["bloomberg"]},
     {"name": "CNN International", "keywords": ["cnn"]},
     {"name": "Hong Kong Finance", "keywords": ["now business", "cable tv finance", "hk", "hong kong", "香港", "财经"]}, 
