@@ -77,6 +77,8 @@ https://jmp2.uk/plu-66a8f01914a2bb00084dd86c.m3u8
 https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/3bd726a3-0d30-491d-b5e7-e1afb6e02112/manifest.m3u8
 #EXTINF:-1 tvg-name="Clubbing TV UK (720p)" group-title="UK Finance",Clubbing TV UK (720p)
 https://a-cdn.klowdtv.com/live3/clubbingtv_720p/playlist.m3u8
+#EXTINF:-1 tvg-name="CNA (360p) [Not 24/7]" group-title="Singapore Finance",CNA (360p) [Not 24/7]
+https://live.creacast.com/cna/stream/playlist.m3u8
 #EXTINF:-1 tvg-name="CNA Originals (1080p)" group-title="Singapore Finance",CNA Originals (1080p)
 https://amg01082-cna-amg01082c1-rlaxx-us-11304.playouts.now.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-name="CNN Headlines" group-title="CNN International",CNN Headlines
@@ -215,9 +217,9 @@ https://d2n3779oy6efpi.cloudfront.net/playlist.m3u8
 https://amg01243-xitenetworksint-hitsuk-samsunguk-mvovq.amagi.tv/playlist/amg01243-xitenetworksint-hitsuk-samsunguk/playlist.m3u8
 #EXTINF:-1 tvg-name="CCTV2" group-title="CCTV财经",CCTV2
 http://111.59.24.227:8181/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTINF:-1 tvg-name="上海第一财经" group-title="CCTV财经",上海第一财经
+#EXTINF:-1 tvg-name="上海第一财经" group-title="Hong Kong Finance",上海第一财经
 https://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
-#EXTINF:-1 tvg-name="第一财经" group-title="CCTV财经",第一财经
+#EXTINF:-1 tvg-name="第一财经" group-title="Hong Kong Finance",第一财经
 http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="A2 CNN Albania" group-title="CNN International",A2 CNN Albania
 https://tv.a2news.com/live/smil:a2cnnweb.stream.smil/playlist.m3u8
