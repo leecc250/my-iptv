@@ -3,27 +3,34 @@ import aiohttp
 import re
 import os
 
-# iptv-org 官方源
-URL_HK = "https://iptv-org.github.io/iptv/countries/hk.m3u"       
-URL_BUSINESS = "https://iptv-org.github.io/iptv/categories/business.m3u"  
-URL_NEWS = "https://iptv-org.github.io/iptv/categories/news.m3u"          
+# 1. 官方与聚合直播源链接列表
+PLAYLIST_URLS = [
+    "https://iptv-org.github.io/iptv/countries/hk.m3u",
+    "https://iptv-org.github.io/iptv/categories/business.m3u",
+    "https://iptv-org.github.io/iptv/categories/news.m3u",
+    "https://iptv-org.github.io/iptv/index.m3u", # 全球完整索引
+    "https://live.zbds.top/tv/iptv4.m3u",
+    "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
+    "https://raw.githubusercontent.com/best-fan/iptv-sources/master/cn_all.m3u8"
+]
 
 LOCAL_SOURCES = "sources.m3u"
 OUTPUT_FILE = "playlist.m3u"
 
-# 【核心白名单规则】只允许匹配以下关键词的频道通过
+# 核心白名单规则：只允许匹配以下关键词的频道通过
 TARGET_CHANNELS = [
-    {"name": "CCTV 2", "keywords": ["cctv 2", "cctv2", "财经"]},
+    {"name": "CCTV财经", "keywords": ["cctv 2", "cctv-2", "cctv2", "财经"]},
     {"name": "Bloomberg TV", "keywords": ["bloomberg"]},
     {"name": "CNN International", "keywords": ["cnn"]},
-    {"name": "Hong Kong Finance", "keywords": ["now business", "cable tv finance", "hk", "hong kong", "香港", "财经"]}, # 可根据实际抓取到的香港财经名称微调
+    {"name": "Hong Kong Finance", "keywords": ["now business", "cable tv finance", "hk", "hong kong", "香港", "财经"]}, 
     {"name": "Singapore Finance", "keywords": ["singapore", "channel newsasia", "cna", "新加坡"]},
     {"name": "UK Finance", "keywords": ["bbc news", "skynews", "uk", "british", "bloomberg uk"]}
 ]
 
 async def fetch_playlist(session, url):
     try:
-        async with session.get(url, timeout=10) as resp:
+        # 针对部分大文件（如 index.m3u 较大），适当延长超时时间
+        async with session.get(url, timeout=15) as resp:
             if resp.status == 200:
                 return await resp.text()
     except Exception as e:
@@ -52,7 +59,6 @@ def parse_m3u(m3u_text):
                         matched_category = target["name"]
                         break
                 
-                # 如果命中白名单，则收入候选池
                 if matched_category:
                     channels.append({
                         "info": info, 
@@ -81,13 +87,18 @@ async def verify_stream(session, channel, timeout=5):
 
 async def main():
     async with aiohttp.ClientSession() as session:
-        print("开始抓取并精准过滤目标财经与新闻频道...")
-        hk_raw = await fetch_playlist(session, URL_HK)
-        biz_raw = await fetch_playlist(session, URL_BUSINESS)
-        news_raw = await fetch_playlist(session, URL_NEWS)
+        print("开始从多个扩展源并发拉取数据...")
+        
+        # 并发抓取所有的外部源
+        fetch_tasks = [fetch_playlist(session, url) for url in PLAYLIST_URLS]
+        raw_results = await asyncio.gather(*fetch_tasks)
 
-        all_channels = parse_m3u(hk_raw) + parse_m3u(biz_raw) + parse_m3u(news_raw)
+        all_channels = []
+        for raw_text in raw_results:
+            if raw_text:
+                all_channels += parse_m3u(raw_text)
 
+        # 读取本地 sources.m3u (如果存在)
         if os.path.exists(LOCAL_SOURCES):
             print("发现本地 sources.m3u，一并进行白名单过滤...")
             with open(LOCAL_SOURCES, 'r', encoding='utf-8') as f:
@@ -99,18 +110,20 @@ async def main():
         channels_to_check = list(all_channels_dict.values())
         print(f"初筛后共锁定 {len(channels_to_check)} 个目标候选源，开始网络连通性检测...")
 
+        # 检测有效性
         tasks = [verify_stream(session, ch) for ch in channels_to_check]
         results = await asyncio.gather(*tasks)
 
         valid_channels = [ch for ch in results if ch is not None]
         print(f"检测完成！最终有效频道: {len(valid_channels)} 个。正在写入 {OUTPUT_FILE}...")
 
+        # 写入最终的 m3u 文件
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
             f.write("#EXTM3U\n")
             for ch in valid_channels:
                 f.write(f'#EXTINF:-1 tvg-name="{ch["name"]}" group-title="{ch["group"]}",{ch["name"]}\n')
                 f.write(f'{ch["url"]}\n')
-        print("精简更新完毕！")
+        print("多源整合更新完毕！")
 
 if __name__ == "__main__":
     asyncio.run(main())
