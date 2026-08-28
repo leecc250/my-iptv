@@ -33,7 +33,7 @@ jobs:
           git add playlist.m3u
           git diff --quiet && git diff --cached --quiet || (git commit -m "Auto-update IPTV playlist [skip ci]" && git push)
 
-      # 2. 直接同步推送至 Gitee 仓库（无需配置 Secrets，直接硬编码）
+     # 2. 自动同步推送至 Gitee 仓库（已修正分支与认证格式）
       - name: Sync to Gitee
         run: |
           git clone https://gitee.com/leecc250/caijingzhiboyuan.git gitee_repo || true
@@ -44,6 +44,8 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add playlist.m3u
             git diff --quiet && git diff --cached --quiet || git commit -m "Sync playlist from GitHub Actions"
-            git remote set-url origin https://x-token-auth:aedd45e4596c414fd0fdd1b370ffd362@gitee.com/leecc250/caijingzhiboyuan.git
-            git push origin main || git push origin master || true
+            
+            # 使用正确的 Gitee Token 认证格式，并强制推送到 master 分支
+            git remote set-url origin https://leecc250:aedd45e4596c414fd0fdd1b370ffd362@gitee.com/leecc250/caijingzhiboyuan.git
+            git push origin master || git push origin main || true
           fi
