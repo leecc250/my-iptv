@@ -20,7 +20,7 @@ PLAYLIST_URLS = [
 LOCAL_SOURCES = "sources.m3u"
 OUTPUT_FILE = "playlist.m3u"
 
-# 【更新后的白名单】对应你所要求的名称和关键词分类
+# 【更新后的白名单】已去除腾讯财经直播、同花顺直播间、东方财富直播间
 TARGET_CHANNELS = [
     # 国际与央媒财经
     {
@@ -47,34 +47,22 @@ TARGET_CHANNELS = [
         "name": "Reuters TV", 
         "keywords": ["reuters", "reuters tv", "路透"]
     },
-    # 国内财经电视与直播间
+    # 国内财经电视与部分网页直播
     {
-        "name": "CBN", 
-        "keywords": ["第一财经", "cbn", "第一财经电视"]
+        "name": "上海第一财经", 
+        "keywords": ["第一财经", "cbn"]
     },
     {
         "name": "东方财经", 
-        "keywords": ["东方财经", "浦东频道", "东方财经浦东"]
+        "keywords": ["东方财经"]
     },
     {
         "name": "深圳财经", 
-        "keywords": ["深圳财经", "深圳财经生活"]
+        "keywords": ["深圳财经"]
     },
     {
         "name": "新浪财经直播", 
-        "keywords": ["新浪财经", "新浪直播"]
-    },
-    {
-        "name": "腾讯财经直播", 
-        "keywords": ["腾讯财经", "腾讯直播"]
-    },
-    {
-        "name": "同花顺直播间", 
-        "keywords": ["同花顺", "同花顺直播"]
-    },
-    {
-        "name": "东方财富直播间", 
-        "keywords": ["东方财富", "东方财富直播"]
+        "keywords": ["新浪财经"]
     }
 ]
 
@@ -142,7 +130,7 @@ async def verify_stream(session, channel, timeout=5):
 
 async def main():
     async with aiohttp.ClientSession() as session:
-        print("开始从多源抓取，并按新规则精准筛选...")
+        print("开始从多源抓取，并按精简后的白名单筛选...")
         
         fetch_tasks = [fetch_playlist(session, url) for url in PLAYLIST_URLS]
         raw_results = await asyncio.gather(*fetch_tasks)
