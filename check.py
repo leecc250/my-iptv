@@ -5,10 +5,13 @@ import os
 
 # 直播源链接列表
 PLAYLIST_URLS = [
+    "https://raw.githubusercontent.com/imDazui/Tvlist-awesome-m3u-m3u8/master/m3u/%E5%9B%BD%E5%A4%96%E7%94%B5%E8%A7%86%E5%8F%B0202409.m3u",
+    "https://raw.githubusercontent.com/imDazui/Tvlist-awesome-m3u-m3u8/master/m3u/%E5%8F%B0%E6%B9%BE%E9%A6%99%E6%B8%AF%E6%BE%B3%E9%97%A8202506.m3u",
+    "https://live.hacks.tools/iptv/index.m3u",
+    "https://raw.githubusercontent.com/cs3306/IPTV-Sources/main/data/output/iptv_collection.m3u",
     "https://iptv-org.github.io/iptv/countries/hk.m3u",
     "https://iptv-org.github.io/iptv/categories/business.m3u",
     "https://iptv-org.github.io/iptv/categories/news.m3u",
-    "https://iptv-org.github.io/iptv/index.m3u",
     "https://live.zbds.top/tv/iptv4.m3u",
     "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
     "https://raw.githubusercontent.com/best-fan/iptv-sources/master/cn_all.m3u8"
@@ -17,7 +20,7 @@ PLAYLIST_URLS = [
 LOCAL_SOURCES = "sources.m3u"
 OUTPUT_FILE = "playlist.m3u"
 
-# 【极致精简白名单】只精准匹配这三个频道，严格排除 originals 等其他杂音
+# 【扩展白名单】精准锁定 CCTV-2、Bloomberg、CNN 加上 CNBC、Fox Business、Reuters TV
 TARGET_CHANNELS = [
     {
         "name": "CCTV 2", 
@@ -25,11 +28,23 @@ TARGET_CHANNELS = [
     },
     {
         "name": "Bloomberg TV", 
-        "keywords": ["bloomberg tv", "bloomberg television"]
+        "keywords": ["bloomberg tv", "bloomberg television", "bloomberg"]
     },
     {
         "name": "CNN International", 
-        "keywords": ["cnn international", "cnn int"]
+        "keywords": ["cnn international", "cnn int", "cnn"]
+    },
+    {
+        "name": "CNBC", 
+        "keywords": ["cnbc", "cnbc usa", "cnbc europe", "cnbc asia"]
+    },
+    {
+        "name": "Fox Business", 
+        "keywords": ["fox business", "fbn"]
+    },
+    {
+        "name": "Reuters TV", 
+        "keywords": ["reuters", "reuters tv", "路透"]
     }
 ]
 
@@ -57,22 +72,15 @@ def parse_m3u(m3u_text):
                 
                 name_lower = name.lower()
                 
-                # 严格过滤掉带有 originals 或 original 的频道
+                # 严格过滤掉带有 originals 或 original 的杂音
                 if "originals" in name_lower or "original" in name_lower:
                     i += 1
                     continue
                 
-                # 匹配目标白名单（必须严格符合这三个频道之一）
+                # 匹配目标白名单
                 matched_category = None
                 for target in TARGET_CHANNELS:
-                    # 检查所有关键词
                     if any(kw in name_lower for kw in target["keywords"]):
-                        # 额外保险：如果是 Bloomberg 或 CNN，确保不会误伤其他衍生频道
-                        if "bloomberg" in target["name"].lower() and "bloomberg" not in name_lower:
-                            continue
-                        if "cnn" in target["name"].lower() and "cnn" not in name_lower:
-                            continue
-                        
                         matched_category = target["name"]
                         break
                 
@@ -104,7 +112,7 @@ async def verify_stream(session, channel, timeout=5):
 
 async def main():
     async with aiohttp.ClientSession() as session:
-        print("开始从多源抓取，并严格筛选 CCTV-2、Bloomberg、CNN...")
+        print("开始从多源抓取，并精准筛选 6 大财经新闻频道...")
         
         fetch_tasks = [fetch_playlist(session, url) for url in PLAYLIST_URLS]
         raw_results = await asyncio.gather(*fetch_tasks)
@@ -115,28 +123,26 @@ async def main():
                 all_channels += parse_m3u(raw_text)
 
         if os.path.exists(LOCAL_SOURCES):
-            print("发现本地 sources.m3u，一并进行白名单过滤...")
             with open(LOCAL_SOURCES, 'r', encoding='utf-8') as f:
                 local_raw = f.read()
                 all_channels += parse_m3u(local_raw)
 
-        # URL 去重
         all_channels_dict = {ch["url"]: ch for ch in all_channels}
         channels_to_check = list(all_channels_dict.values())
-        print(f"初筛后共锁定 {len(channels_to_check)} 个目标候选源，开始网络连通性测试...")
+        print(f"初筛后共锁定 {len(channels_to_check)} 个候选源，开始连通性测试...")
 
         tasks = [verify_stream(session, ch) for ch in channels_to_check]
         results = await asyncio.gather(*tasks)
 
         valid_channels = [ch for ch in results if ch is not None]
-        print(f"检测完成！最终有效频道数: {len(valid_channels)} 个。正在写入 {OUTPUT_FILE}...")
+        print(f"检测完成！有效频道数: {len(valid_channels)} 个。正在写入 {OUTPUT_FILE}...")
 
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
             f.write("#EXTM3U\n")
             for ch in valid_channels:
                 f.write(f'#EXTINF:-1 tvg-name="{ch["name"]}" group-title="{ch["group"]}",{ch["name"]}\n')
                 f.write(f'{ch["url"]}\n')
-        print("精简更新完毕！")
+        print("更新完毕！")
 
 if __name__ == "__main__":
     asyncio.run(main())
