@@ -39,7 +39,7 @@ jobs:
           GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
         run: |
           if [ -n "${{ secrets.GITEE_TOKEN }}" ]; then
-            git clone https://gitee.com/你的Gitee用户名/你的Gitee仓库名.git gitee_repo || true
+            git clone https://gitee.com/leecc250/caijingzhiboyuan.git gitee_repo || true
             if [ -d "gitee_repo" ]; then
               cp playlist.m3u gitee_repo/
               cd gitee_repo
@@ -47,7 +47,7 @@ jobs:
               git config user.email "github-actions[bot]@users.noreply.github.com"
               git add playlist.m3u
               git diff --quiet && git diff --cached --quiet || git commit -m "Sync playlist from GitHub Actions"
-              git remote set-url origin https://x-token-auth:${{ secrets.GITEE_TOKEN }}@gitee.com/你的Gitee用户名/你的Gitee仓库名.git
+              git remote set-url origin https://x-token-auth:${{ secrets.GITEE_TOKEN }}@gitee.com/leecc250/caijingzhiboyuan.git
               git push origin main || git push origin master || true
             fi
           else
