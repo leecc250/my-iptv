@@ -25,7 +25,7 @@ jobs:
         run: |
           python check.py
 
-      # 1. 提交更新到 GitHub 自身的仓库（加了容错，没变动时不报错）
+      # 1. 提交更新到 GitHub 自身的仓库
       - name: Commit and Push to GitHub
         run: |
           git config --global user.name "github-actions[bot]"
@@ -33,23 +33,17 @@ jobs:
           git add playlist.m3u
           git diff --quiet && git diff --cached --quiet || (git commit -m "Auto-update IPTV playlist [skip ci]" && git push)
 
-      # 2. 自动同步推送至 Gitee 仓库（加了 || true 防止因为同步失败导致整个工作流变红）
+      # 2. 直接同步推送至 Gitee 仓库（无需配置 Secrets，直接硬编码）
       - name: Sync to Gitee
-        env:
-          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
         run: |
-          if [ -n "${{ secrets.GITEE_TOKEN }}" ]; then
-            git clone https://gitee.com/leecc250/caijingzhiboyuan.git gitee_repo || true
-            if [ -d "gitee_repo" ]; then
-              cp playlist.m3u gitee_repo/
-              cd gitee_repo
-              git config user.name "github-actions[bot]"
-              git config user.email "github-actions[bot]@users.noreply.github.com"
-              git add playlist.m3u
-              git diff --quiet && git diff --cached --quiet || git commit -m "Sync playlist from GitHub Actions"
-              git remote set-url origin https://x-token-auth:${{ secrets.GITEE_TOKEN }}@gitee.com/leecc250/caijingzhiboyuan.git
-              git push origin main || git push origin master || true
-            fi
-          else
-            echo "Skipping Gitee sync: GITEE_TOKEN is not set."
+          git clone https://gitee.com/leecc250/caijingzhiboyuan.git gitee_repo || true
+          if [ -d "gitee_repo" ]; then
+            cp playlist.m3u gitee_repo/
+            cd gitee_repo
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add playlist.m3u
+            git diff --quiet && git diff --cached --quiet || git commit -m "Sync playlist from GitHub Actions"
+            git remote set-url origin https://x-token-auth:aedd45e4596c414fd0fdd1b370ffd362@gitee.com/leecc250/caijingzhiboyuan.git
+            git push origin main || git push origin master || true
           fi
