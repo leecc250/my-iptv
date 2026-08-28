@@ -20,11 +20,10 @@ OUTPUT_FILE = "playlist.m3u"
 # 核心白名单规则：只允许匹配以下关键词的频道通过
 TARGET_CHANNELS = [
     {"name": "CCTV财经", "keywords": ["cctv 2", "cctv-2", "cctv2"]},
-    {"name": "Bloomberg TV", "keywords": ["bloomberg"]},
-    {"name": "CNN International", "keywords": ["cnn"]},
-    {"name": "Hong Kong Finance", "keywords": ["now business", "cable tv finance", "hk", "hong kong", "香港", "财经"]}, 
-    {"name": "Singapore Finance", "keywords": ["singapore", "channel newsasia", "cna", "新加坡"]},
-    {"name": "UK Finance", "keywords": ["bbc news", "skynews", "uk", "british", "bloomberg uk"]}
+    {"name": "Bloomberg TV", "keywords": ["bloomberg TV"]},
+    {"name": "CNN International", "keywords": ["cnn International"]},
+    {"name": "Hong Kong Finance", "keywords": ["now business"]}, 
+    {"name": "UK Finance", "keywords": ["bbc news"]}
 ]
 
 async def fetch_playlist(session, url):
