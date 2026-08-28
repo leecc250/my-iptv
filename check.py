@@ -50,19 +50,7 @@ TARGET_CHANNELS = [
     # 国内财经电视与部分网页直播
     {
         "name": "上海第一财经", 
-        "keywords": ["第一财经", "cbn"]
-    },
-    {
-        "name": "东方财经", 
-        "keywords": ["东方财经"]
-    },
-    {
-        "name": "深圳财经", 
-        "keywords": ["深圳财经"]
-    },
-    {
-        "name": "新浪财经直播", 
-        "keywords": ["新浪财经"]
+        "keywords": ["第一财经", "cbn news"]
     }
 ]
 
