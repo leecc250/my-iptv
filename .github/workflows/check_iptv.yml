@@ -40,7 +40,7 @@ jobs:
           GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
         run: |
           # 克隆你的 Gitee 仓库
-          git clone https://gitee.com/你的Gitee用户名/你的Gitee仓库名.git gitee_repo
+          git clone https://gitee.com/leecc250/caijingzhiboyuan.git gitee_repo
           
           # 将 GitHub 生成的最新 playlist.m3u 复制过去
           cp playlist.m3u gitee_repo/
@@ -52,5 +52,5 @@ jobs:
           # 如果有改动则提交并推送到 Gitee
           git add playlist.m3u
           git diff --quiet && git diff --cached --quiet || git commit -m "Sync playlist from GitHub Actions"
-          git remote set-url origin https://x-token-auth:${{ secrets.GITEE_TOKEN }}@gitee.com/你的Gitee用户名/你的Gitee仓库名.git
-          git push origin main
+          git remote set-url origin https://x-token-auth:${{ secrets.GITEE_TOKEN }}@gitee.com/leecc250/caijingzhiboyuan.git
+          git push origin master
