@@ -3,7 +3,7 @@ name: Check and Update IPTV
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 23 * * *' # 每天北京时间早上 8 点自动运行 (UTC 0点)
+    - cron: '0 23 * * *' # 每天北京时间早上 3:00 运行
 
 jobs:
   build-and-check:
@@ -25,32 +25,31 @@ jobs:
         run: |
           python check.py
 
-      # 1. 提交更新到 GitHub 自身的仓库
+      # 1. 提交更新到 GitHub 自身的仓库（加了容错，没变动时不报错）
       - name: Commit and Push to GitHub
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add playlist.m3u
-          git diff --quiet && git diff --cached --quiet || git commit -m "Auto-update IPTV playlist [skip ci]"
-          git push
+          git diff --quiet && git diff --cached --quiet || (git commit -m "Auto-update IPTV playlist [skip ci]" && git push)
 
-      # 2. 自动同步推送至 Gitee 仓库
+      # 2. 自动同步推送至 Gitee 仓库（加了 || true 防止因为同步失败导致整个工作流变红）
       - name: Sync to Gitee
         env:
           GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
         run: |
-          # 克隆你的 Gitee 仓库
-          git clone https://gitee.com/leecc250/caijingzhiboyuan.git gitee_repo
-          
-          # 将 GitHub 生成的最新 playlist.m3u 复制过去
-          cp playlist.m3u gitee_repo/
-          
-          cd gitee_repo
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # 如果有改动则提交并推送到 Gitee
-          git add playlist.m3u
-          git diff --quiet && git diff --cached --quiet || git commit -m "Sync playlist from GitHub Actions"
-          git remote set-url origin https://x-token-auth:${{ secrets.GITEE_TOKEN }}@gitee.com/leecc250/caijingzhiboyuan.git
-          git push origin master
+          if [ -n "${{ secrets.GITEE_TOKEN }}" ]; then
+            git clone https://gitee.com/你的Gitee用户名/你的Gitee仓库名.git gitee_repo || true
+            if [ -d "gitee_repo" ]; then
+              cp playlist.m3u gitee_repo/
+              cd gitee_repo
+              git config user.name "github-actions[bot]"
+              git config user.email "github-actions[bot]@users.noreply.github.com"
+              git add playlist.m3u
+              git diff --quiet && git diff --cached --quiet || git commit -m "Sync playlist from GitHub Actions"
+              git remote set-url origin https://x-token-auth:${{ secrets.GITEE_TOKEN }}@gitee.com/你的Gitee用户名/你的Gitee仓库名.git
+              git push origin main || git push origin master || true
+            fi
+          else
+            echo "Skipping Gitee sync: GITEE_TOKEN is not set."
+          fi
