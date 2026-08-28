@@ -1,16 +1,15 @@
-name: Multi-Source IPTV Auto Merge
+name: Check and Update IPTV
 
 on:
-  schedule:
-    - cron: '0 20 * * *'
   workflow_dispatch:
+  schedule:
+    - cron: '0 23 * * *' # 每天北京时间早上 8 点自动运行 (UTC 0点)
 
 jobs:
   build-and-check:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repo
+      - name: Checkout GitHub Repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -18,20 +17,40 @@ jobs:
         with:
           python-version: '3.10'
 
-      # 新增这一步，安装 aiohttp 依赖
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install aiohttp
 
       - name: Run Check Script
-        run: python check.py
-
-      - name: Commit and Push
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          python check.py
+
+      # 1. 提交更新到 GitHub 自身的仓库
+      - name: Commit and Push to GitHub
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add playlist.m3u
-          # 保留你的 [skip ci] 避免死循环
-          git commit -m "Auto Update: 自动拉取并过滤有效源 [skip ci]" || exit 0
+          git diff --quiet && git diff --cached --quiet || git commit -m "Auto-update IPTV playlist [skip ci]"
           git push
+
+      # 2. 自动同步推送至 Gitee 仓库
+      - name: Sync to Gitee
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        run: |
+          # 克隆你的 Gitee 仓库
+          git clone https://gitee.com/你的Gitee用户名/你的Gitee仓库名.git gitee_repo
+          
+          # 将 GitHub 生成的最新 playlist.m3u 复制过去
+          cp playlist.m3u gitee_repo/
+          
+          cd gitee_repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # 如果有改动则提交并推送到 Gitee
+          git add playlist.m3u
+          git diff --quiet && git diff --cached --quiet || git commit -m "Sync playlist from GitHub Actions"
+          git remote set-url origin https://x-token-auth:${{ secrets.GITEE_TOKEN }}@gitee.com/你的Gitee用户名/你的Gitee仓库名.git
+          git push origin main
