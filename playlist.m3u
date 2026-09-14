@@ -27,6 +27,8 @@ https://www.bloomberg.com/media-manifest/streams/asia.m3u8
 http://23.237.104.106:8080/USA_BLOOMBERG/index.m3u8
 #EXTINF:-1 tvg-name="Bloomberg TV Asia (720p)" group-title="Bloomberg TV",Bloomberg TV Asia (720p)
 https://bloomberg.com/media-manifest/streams/asia.m3u8
+#EXTINF:-1 tvg-name="Bloomberg TV Asia Live Event (720p)" group-title="Bloomberg TV",Bloomberg TV Asia Live Event (720p)
+https://bloomberg.com/media-manifest/streams/asia-event.m3u8
 #EXTINF:-1 tvg-name="Bloomberg TV EMEA Live Event (720p)" group-title="Bloomberg TV",Bloomberg TV EMEA Live Event (720p)
 https://bloomberg.com/media-manifest/streams/eu-event.m3u8
 #EXTINF:-1 tvg-name="Bloomberg Television (Europe)" group-title="Bloomberg TV",Bloomberg Television (Europe)
@@ -43,20 +45,16 @@ https://86ebec83.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/UmFrdX
 https://amg14891-amg14891c5-amgplt0020.playout.now3.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-name="CNBC (720p)" group-title="CNBC",CNBC (720p)
 http://4.30.180.36:8420/cnbc/index.m3u8?token=test
-#EXTINF:-1 tvg-name="CNBC Arabiya (1080p)" group-title="CNBC",CNBC Arabiya (1080p)
-https://cnbc-live.akamaized.net/cnbc/master.m3u8
 #EXTINF:-1 tvg-name="「US」 Bloomberg TV+2" group-title="Bloomberg TV",「US」 Bloomberg TV+2
 https://liveprodusphoenixeast.akamaized.net/USPhx-HD/Channel-TX-USPhx-AWS-virginia-1/Source-USPhx-16k-1-s6lk2-BP-07-02-81ykIWnsMsg_live.m3u8?zshijd
 #EXTINF:-1 tvg-name="「US」 BloombergTV+2" group-title="Bloomberg TV",「US」 BloombergTV+2
 https://liveprodusphoenixeast.akamaized.net/USPhx-HD/Channel-TX-USPhx-AWS-virginia-1/Source-USPhx-16k-1-s6lk2-BP-07-02-81ykIWnsMsg_live.m3u8
-#EXTINF:-1 tvg-name="Bloomberg TV Asia Live Event" group-title="Bloomberg TV",Bloomberg TV Asia Live Event
-https://www.bloomberg.com/media-manifest/streams/asia-event.m3u8
-#EXTINF:-1 tvg-name="Bloomberg TV Asia Live Event (720p)" group-title="Bloomberg TV",Bloomberg TV Asia Live Event (720p)
-https://bloomberg.com/media-manifest/streams/asia-event.m3u8
 #EXTINF:-1 tvg-name="Bloomberg TV Australia (270p)" group-title="Bloomberg TV",Bloomberg TV Australia (270p)
 https://bloomberg.com/media-manifest/streams/aus.m3u8
 #EXTINF:-1 tvg-name="CCTV-2 (720p)" group-title="CCTV 2",CCTV-2 (720p)
 http://74.91.26.218:82/live/cctv2hd.m3u8
+#EXTINF:-1 tvg-name="CNBC Arabiya (1080p)" group-title="CNBC",CNBC Arabiya (1080p)
+https://cnbc-live.akamaized.net/cnbc/master.m3u8
 #EXTINF:-1 tvg-name="CNBC Awaaz (1080p)" group-title="CNBC",CNBC Awaaz (1080p)
 https://n18syndication.akamaized.net/bpk-tv/CNBC_Awaaz_NW18_MOB/output01/master.m3u8
 #EXTINF:-1 tvg-name="CNBC Bajar (1080p)" group-title="CNBC",CNBC Bajar (1080p)
@@ -92,4 +90,4 @@ https://bloomberg.com/media-manifest/streams/phoenix-us.m3u8
 #EXTINF:-1 tvg-name="CNBC Europe" group-title="CNBC",CNBC Europe
 https://amg01079-nbcuuk-amg01079c1-samsung-es-1261.playouts.now.amagi.tv/playlist/amg01079-nbcuukfast-cnbcpe-samsunges/playlist.m3u8
 #EXTINF:-1 tvg-name="CCTV2" group-title="CCTV 2",CCTV2
-http://112.123.243.37:50085/tsfile/live/0002_1.m3u8?key=txiptv&playlive=0&authid=0
+http://120.198.95.220:9901/tsfile/live/1016_1.m3u8?key=txiptv&playlive=1&down=1
