@@ -15,20 +15,18 @@ http://liveproduseast.akamaized.net/us/Channel-USTV-AWS-virginia-1/Source-USTV-1
 https://epg.pw/stream/d2edf469b9079064a283f4b0811cbf6f2597ebbb3d08dcf77036a4b5a791b7cf.m3u8
 #EXTINF:-1 tvg-name="CCTV-2 财经" group-title="CCTV 2",CCTV-2 财经
 http://198.204.228.26/live/cctv2hd.m3u8
-#EXTINF:-1 tvg-name="上海第一财经" group-title="上海第一财经",上海第一财经
-http://bp-livetytv.bestv.cn/ch/bestvdycj.m3u8
 #EXTINF:-1 tvg-name="Antena 3 CNN (1080p)" group-title="CNN International",Antena 3 CNN (1080p)
 https://live3vox.antenaplay.ro/a3free/a3free.m3u8
-#EXTINF:-1 tvg-name="CNN HD (720p) [Geo-blocked]" group-title="CNN International",CNN HD (720p) [Geo-blocked]
-http://212.5.144.156:8080/cnn/index.m3u8
 #EXTINF:-1 tvg-name="CNN Brasil (1080p)" group-title="CNN International",CNN Brasil (1080p)
 https://d25usgadhphvwi.cloudfront.net/hls/main.m3u8
+#EXTINF:-1 tvg-name="CNN Chile (1080p)" group-title="CNN International",CNN Chile (1080p)
+http://190.110.96.238:8000/play/a0f5/index.m3u8
 #EXTINF:-1 tvg-name="CNN en Espanol (1080p)" group-title="CNN International",CNN en Espanol (1080p)
 https://streaming.onnethn.com/CNN_ESPANOL/playlist.m3u8
 #EXTINF:-1 tvg-name="CNN International (1080p)" group-title="CNN International",CNN International (1080p)
 https://d3bp6dwmpbdajl.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-ury0meh5m4nzm/index.m3u8
-#EXTINF:-1 tvg-name="CNN Portugal" group-title="CNN International",CNN Portugal
-https://github.com/thomraider12/canaistvpt/raw/main/m3u8s/cnnpt.m3u8
+#EXTINF:-1 tvg-name="CNN International North America (1080p)" group-title="CNN International",CNN International North America (1080p)
+https://d2sybdl23b9psq.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-bocx3i7bjz0dg/CNNFAST_GB.m3u8
 #EXTINF:-1 tvg-name="Bloomberg TV Australia (270p)" group-title="Bloomberg TV",Bloomberg TV Australia (270p)
 https://bloomberg.com/media-manifest/streams/aus.m3u8
 #EXTINF:-1 tvg-name="CBN News (1080p)" group-title="上海第一财经",CBN News (1080p)
@@ -39,8 +37,6 @@ https://amg01079-nbcuuk-amg01079c2-samsung-gb-1258.playouts.now.amagi.tv/playlis
 https://www.bloomberg.com/media-manifest/streams/asia.m3u8
 #EXTINF:-1 tvg-name="Bloomberg TV (1080p)" group-title="Bloomberg TV",Bloomberg TV (1080p)
 http://23.237.104.106:8080/USA_BLOOMBERG/index.m3u8
-#EXTINF:-1 tvg-name="Bloomberg TV + (2160p)" group-title="Bloomberg TV",Bloomberg TV + (2160p)
-https://d8975dc3.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/U2Ftc3VuZy1nYl9CbG9vbWJlcmdUVlBsdXNfSExT/playlist.m3u8
 #EXTINF:-1 tvg-name="Bloomberg TV Asia (720p)" group-title="Bloomberg TV",Bloomberg TV Asia (720p)
 https://bloomberg.com/media-manifest/streams/asia.m3u8
 #EXTINF:-1 tvg-name="Bloomberg TV Asia Live Event (720p)" group-title="Bloomberg TV",Bloomberg TV Asia Live Event (720p)
@@ -61,6 +57,8 @@ https://cnbc-live.akamaized.net/cnbc/master.m3u8
 https://liveprodusphoenixeast.akamaized.net/USPhx-HD/Channel-TX-USPhx-AWS-virginia-1/Source-USPhx-16k-1-s6lk2-BP-07-02-81ykIWnsMsg_live.m3u8?zshijd
 #EXTINF:-1 tvg-name="「US」 BloombergTV+2" group-title="Bloomberg TV",「US」 BloombergTV+2
 https://liveprodusphoenixeast.akamaized.net/USPhx-HD/Channel-TX-USPhx-AWS-virginia-1/Source-USPhx-16k-1-s6lk2-BP-07-02-81ykIWnsMsg_live.m3u8
+#EXTINF:-1 tvg-name="Bloomberg TV + (2160p)" group-title="Bloomberg TV",Bloomberg TV + (2160p)
+https://d8975dc3.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/U2Ftc3VuZy1nYl9CbG9vbWJlcmdUVlBsdXNfSExT/playlist.m3u8
 #EXTINF:-1 tvg-name="CCTV-2 (720p)" group-title="CCTV 2",CCTV-2 (720p)
 http://74.91.26.218:82/live/cctv2hd.m3u8
 #EXTINF:-1 tvg-name="CNBC Asia HD (1080p)" group-title="CNBC",CNBC Asia HD (1080p)
@@ -77,16 +75,14 @@ https://n18syndication.akamaized.net/bpk-tv/CNBC_Tv18_Prime_HD_NW18_MOB/output01
 https://hnpsechtsc.turknet.ercdn.net/xpnvudnlsv/cnbc-e/cnbc-e.m3u8
 #EXTINF:-1 tvg-name="Fox Business Network (576p)" group-title="Fox Business",Fox Business Network (576p)
 https://tvsen6.aynaott.com/foxbusiness/index.m3u8
-#EXTINF:-1 tvg-name="A2 CNN Albania" group-title="CNN International",A2 CNN Albania
-https://tv.a2news.com/live/smil:a2cnnweb.stream.smil/playlist.m3u8
 #EXTINF:-1 tvg-name="CNN (720p)" group-title="CNN International",CNN (720p)
 https://tvsen6.aynaott.com/cnn/index.m3u8
-#EXTINF:-1 tvg-name="CNN Chile (1080p)" group-title="CNN International",CNN Chile (1080p)
-http://190.110.96.238:8000/play/a0f5/index.m3u8
-#EXTINF:-1 tvg-name="CNN International North America (1080p)" group-title="CNN International",CNN International North America (1080p)
-https://d2sybdl23b9psq.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-bocx3i7bjz0dg/CNNFAST_GB.m3u8
+#EXTINF:-1 tvg-name="CNN International Latin America (1080p)" group-title="CNN International",CNN International Latin America (1080p)
+http://168.228.44.241:9997/play/a073/index.m3u8
 #EXTINF:-1 tvg-name="CNN News 18 (1080p)" group-title="CNN International",CNN News 18 (1080p)
 https://n18syndication.akamaized.net/bpk-tv/CNN_News18_NW18_MOB/output01/master.m3u8
+#EXTINF:-1 tvg-name="CNN Portugal" group-title="CNN International",CNN Portugal
+https://github.com/thomraider12/canaistvpt/raw/main/m3u8s/cnnpt.m3u8
 #EXTINF:-1 tvg-name="CNN Prima News (1080p)" group-title="CNN International",CNN Prima News (1080p)
 http://88.212.15.17/live/test_cnn_pirma_news/playlist.m3u8
 #EXTINF:-1 tvg-name="Reuters" group-title="Reuters TV",Reuters
@@ -95,8 +91,6 @@ https://amg00453-reuters-amg00453c1-rakuten-uk-2110.playouts.now.amagi.tv/playli
 https://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
 #EXTINF:-1 tvg-name="第一财经" group-title="上海第一财经",第一财经
 http://satellitepull.cnr.cn/live/wx32dycjgb/playlist.m3u8
-#EXTINF:-1 tvg-name="CNN Prima News" group-title="CNN International",CNN Prima News
-https://sktv.mxnticek.eu/new/stream.php?ch=PrimaNews
 #EXTINF:-1 tvg-name="Class CNBC Ⓖ" group-title="CNBC",Class CNBC Ⓖ
 https://amg14891-amg14891c5-amgplt0020.playout.now3.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-name="CNBC MGL" group-title="CNBC",CNBC MGL
@@ -113,5 +107,7 @@ https://bloomberg.com/media-manifest/streams/us.m3u8
 https://bloomberg.com/media-manifest/streams/phoenix-us.m3u8
 #EXTINF:-1 tvg-name="CNBC Europe" group-title="CNBC",CNBC Europe
 https://amg01079-nbcuuk-amg01079c1-samsung-es-1261.playouts.now.amagi.tv/playlist/amg01079-nbcuukfast-cnbcpe-samsunges/playlist.m3u8
-#EXTINF:-1 tvg-name="CCTV-2" group-title="CCTV 2",CCTV-2
-http://192.151.150.154/live/cctv2hd.m3u8
+#EXTINF:-1 tvg-name="CCTV2" group-title="CCTV 2",CCTV2
+http://120.198.95.220:9901/tsfile/live/1016_1.m3u8?key=txiptv&playlive=1&down=1
+#EXTINF:-1 tvg-name="CCTV-2财经" group-title="CCTV 2",CCTV-2财经
+http://113.25.252.226:9901/tsfile/live/1006_1.m3u8?key=txiptv&playlive=1&authid=0
