@@ -6,7 +6,7 @@ http://liveproduseast.akamaized.net/us/Channel-USTV-AWS-virginia-1/Source-USTV-1
 #EXTINF:-1 tvg-name="Bloomberg Asia" group-title="Bloomberg TV",Bloomberg Asia
 https://epg.pw/stream/d2edf469b9079064a283f4b0811cbf6f2597ebbb3d08dcf77036a4b5a791b7cf.m3u8
 #EXTINF:-1 tvg-name="CCTV-2 财经" group-title="CCTV 2",CCTV-2 财经
-http://204.12.221.218:8181/3m1080p/cctv2.m3u8
+http://192.151.150.154/live/cctv2hd.m3u8
 #EXTINF:-1 tvg-name="Antena 3 CNN" group-title="CNN International",Antena 3 CNN
 https://live3vox.antenaplay.ro/a3free/a3free.m3u8
 #EXTINF:-1 tvg-name="Antena 3 CNN HD (1080i)" group-title="CNN International",Antena 3 CNN HD (1080i)
@@ -19,24 +19,18 @@ https://d25usgadhphvwi.cloudfront.net/hls/main.m3u8
 https://amg00803-cnnfast-amg00803c3-lg-es-5477.playouts.now.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-name="CNN International (1080p)" group-title="CNN International",CNN International (1080p)
 https://d3bp6dwmpbdajl.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-ury0meh5m4nzm/index.m3u8
-#EXTINF:-1 tvg-name="CNN International Latin America (1080p)" group-title="CNN International",CNN International Latin America (1080p)
-http://168.228.44.241:9997/play/a073/index.m3u8
 #EXTINF:-1 tvg-name="CNN International North America (1080p)" group-title="CNN International",CNN International North America (1080p)
 https://d2sybdl23b9psq.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-bocx3i7bjz0dg/CNNFAST_GB.m3u8
 #EXTINF:-1 tvg-name="CNN Portugal (720p)" group-title="CNN International",CNN Portugal (720p)
 https://github.com/thomraider12/canaistvpt/raw/main/m3u8s/cnnpt.m3u8
 #EXTINF:-1 tvg-name="CNN Prima News (1080p)" group-title="CNN International",CNN Prima News (1080p)
 http://88.212.15.50/live/test_cnn_pirma_news/playlist.m3u8
-#EXTINF:-1 tvg-name="CNN Turk (1080p)" group-title="CNN International",CNN Turk (1080p)
-http://85.117.61.84/cnnturk/index.m3u8
 #EXTINF:-1 tvg-name="Bloomberg TV Australia (270p)" group-title="Bloomberg TV",Bloomberg TV Australia (270p)
 https://bloomberg.com/media-manifest/streams/aus.m3u8
 #EXTINF:-1 tvg-name="CBN News (1080p)" group-title="上海第一财经",CBN News (1080p)
 https://fastly.live.brightcove.com/6380396819112/us-east-1/734546207001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoiczFpM3ZpLmVncmVzcy50N2M3emwiLCJhY2NvdW50X2lkIjoiNzM0NTQ2MjA3MDAxIiwiZWhuIjoiZmFzdGx5LmxpdmUuYnJpZ2h0Y292ZS5jb20iLCJpc3MiOiJibGl2ZS1wbGF5YmFjay1zb3VyY2UtYXBpIiwic3ViIjoicGF0aG1hcHRva2VuIiwiYXVkIjpbIjczNDU0NjIwNzAwMSJdLCJqdGkiOiI2MzgwMzk2ODE5MTEyIn0.GDYp4IWtzwPkupEWeeOavnioVknO-Ev3UGlHvM1rE6I/playlist-hls.m3u8
 #EXTINF:-1 tvg-name="CNBC UK (1080p)" group-title="CNBC",CNBC UK (1080p)
 https://amg01079-nbcuuk-amg01079c2-samsung-gb-1258.playouts.now.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-name="Bloomberg News Asia" group-title="Bloomberg TV",Bloomberg News Asia
-https://www.bloomberg.com/media-manifest/streams/asia.m3u8
 #EXTINF:-1 tvg-name="Bloomberg TV (1080p)" group-title="Bloomberg TV",Bloomberg TV (1080p)
 http://23.237.104.106:8080/USA_BLOOMBERG/index.m3u8
 #EXTINF:-1 tvg-name="Bloomberg TV + (2160p)" group-title="Bloomberg TV",Bloomberg TV + (2160p)
@@ -59,6 +53,8 @@ https://cnbc-live.akamaized.net/cnbc/master.m3u8
 https://liveprodusphoenixeast.akamaized.net/USPhx-HD/Channel-TX-USPhx-AWS-virginia-1/Source-USPhx-16k-1-s6lk2-BP-07-02-81ykIWnsMsg_live.m3u8?zshijd
 #EXTINF:-1 tvg-name="「US」 BloombergTV+2" group-title="Bloomberg TV",「US」 BloombergTV+2
 https://liveprodusphoenixeast.akamaized.net/USPhx-HD/Channel-TX-USPhx-AWS-virginia-1/Source-USPhx-16k-1-s6lk2-BP-07-02-81ykIWnsMsg_live.m3u8
+#EXTINF:-1 tvg-name="Bloomberg TV Asia Live Event" group-title="Bloomberg TV",Bloomberg TV Asia Live Event
+https://www.bloomberg.com/media-manifest/streams/asia-event.m3u8
 #EXTINF:-1 tvg-name="Bloomberg HT (720p)" group-title="Bloomberg TV",Bloomberg HT (720p)
 https://mumbai-edge.smartplaytv.in/BloombergHT/index.m3u8
 #EXTINF:-1 tvg-name="Bloomberg TV Asia Live Event (720p)" group-title="Bloomberg TV",Bloomberg TV Asia Live Event (720p)
@@ -83,10 +79,18 @@ https://hnpsechtsc.turknet.ercdn.net/xpnvudnlsv/cnbc-e/cnbc-e.m3u8
 https://tvsen6.aynaott.com/foxbusiness/index.m3u8
 #EXTINF:-1 tvg-name="CNN (720p)" group-title="CNN International",CNN (720p)
 https://tvsen6.aynaott.com/cnn/index.m3u8
+#EXTINF:-1 tvg-name="CNN Headlines (1080p) [Geo-blocked]" group-title="CNN International",CNN Headlines (1080p) [Geo-blocked]
+https://amg01918-cnnus-amg01918c1-vizio-us-1813.playouts.now.amagi.tv/playlist/amg01918-cnnus-cnnheadlines-vizious/playlist.m3u8
+#EXTINF:-1 tvg-name="CNN International Latin America (1080p)" group-title="CNN International",CNN International Latin America (1080p)
+http://168.228.44.241:9997/play/a073/index.m3u8
 #EXTINF:-1 tvg-name="CNN News 18 (1080p)" group-title="CNN International",CNN News 18 (1080p)
 https://n18syndication.akamaized.net/bpk-tv/CNN_News18_NW18_MOB/output01/master.m3u8
+#EXTINF:-1 tvg-name="CNN Turk (1080p)" group-title="CNN International",CNN Turk (1080p)
+http://85.117.61.84/cnnturk/index.m3u8
 #EXTINF:-1 tvg-name="Reuters" group-title="Reuters TV",Reuters
 https://amg00453-reuters-amg00453c1-rakuten-uk-2110.playouts.now.amagi.tv/playlist/amg00453-reuters-reuters-rakutenuk/playlist.m3u8
+#EXTINF:-1 tvg-name="CNN Prima News" group-title="CNN International",CNN Prima News
+https://sktv.mxnticek.eu/new/stream.php?ch=PrimaNews
 #EXTINF:-1 tvg-name="Class CNBC Ⓖ" group-title="CNBC",Class CNBC Ⓖ
 https://amg14891-amg14891c5-amgplt0020.playout.now3.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-name="CNBC MGL" group-title="CNBC",CNBC MGL
@@ -101,8 +105,6 @@ https://bloomberg.com/media-manifest/streams/us.m3u8
 https://bloomberg.com/media-manifest/streams/phoenix-us.m3u8
 #EXTINF:-1 tvg-name="CNBC Europe" group-title="CNBC",CNBC Europe
 https://amg01079-nbcuuk-amg01079c1-samsung-es-1261.playouts.now.amagi.tv/playlist/amg01079-nbcuukfast-cnbcpe-samsunges/playlist.m3u8
-#EXTINF:-1 tvg-name="CCTV2" group-title="CCTV 2",CCTV2
-http://123.160.173.129:85/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
 #EXTINF:-1 tvg-name="CCTV2" group-title="CCTV 2",CCTV2
 http://222.223.41.27:8888/hls/2/index.m3u8
 #EXTINF:-1 tvg-name="CCTV2" group-title="CCTV 2",CCTV2
